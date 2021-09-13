@@ -1,33 +1,34 @@
 package qa.pages;
 
-import io.appium.java_client.MobileBy;
-import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.pagefactory.AndroidFindBy;
 
-
-public class LoginPage extends BasePage{
-
-    public LoginPage(AndroidDriver driver) {
+public class LoginPage extends PageBase {
+    public LoginPage(AppiumDriver<MobileElement> driver) {
         super(driver);
     }
+    @AndroidFindBy(accessibility = "test-Username")
+    private MobileElement userNameTextField;
 
+    @AndroidFindBy(accessibility = "test-Password")
+    private MobileElement passwordTextField;
 
-    MobileBy usernameTxtFld = new MobileBy.ByAccessibilityId("test-Username");
-    MobileBy passwordTxtFld = new MobileBy.ByAccessibilityId("test-Password");
-    MobileBy loginBtn = new MobileBy.ByAccessibilityId("test-LOGIN");
-
+    @AndroidFindBy(accessibility = "test-LOGIN")
+    private MobileElement loginButton;
 
     public LoginPage enterUserName(String userName) {
-        sendKeys(usernameTxtFld,userName);
+        sendKeys(userNameTextField,userName);
         return this;
     }
 
     public LoginPage enterUserPassword(String password) {
-        sendKeys(passwordTxtFld,password);
+        sendKeys(passwordTextField,password);
         return this;
     }
 
     public void pressLoginPage() {
-        click(loginBtn);
+        click(loginButton);
     }
 
 }
