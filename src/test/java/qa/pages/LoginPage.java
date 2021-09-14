@@ -3,7 +3,7 @@ package qa.pages;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import org.testng.Assert;
+import org.junit.jupiter.api.Assertions;
 
 public class LoginPage extends PageBase {
     public LoginPage(AppiumDriver<MobileElement> driver) {
@@ -39,12 +39,18 @@ public class LoginPage extends PageBase {
         return this;
     }
 
-    public void pressLoginPage() {
+    public ProductsPage pressLoginButton() {
         click(loginButton);
+        return new ProductsPage(driver);
     }
 
     public void validateErrorMessage() {
-        Assert.assertEquals(getElementText(loginErrorMessage),errorMessage);
+        Assertions.assertEquals(getElementText(loginErrorMessage),errorMessage);
+    }
+
+    public ProductsPage directLogin() {
+        enterUserName(validUserName).enterUserPassword(validPassword).pressLoginButton();
+        return new ProductsPage(driver);
     }
 
 }

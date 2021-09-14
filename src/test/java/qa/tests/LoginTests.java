@@ -1,48 +1,51 @@
 package qa.tests;
 
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import qa.pages.LoginPage;
 
-public class LoginTest extends TestBase{
+public class LoginTests extends TestBase{
 
     LoginPage loginPage;
 
 
-    @BeforeMethod
+    @BeforeEach
     public void setupMethod() {
+        driver.closeApp();
+        driver.launchApp();
         loginPage = new LoginPage(driver);
     }
 
-    @Test(priority = 0)
+    @Test
     public void loginWith_invalidUsername_invalidPassword(){
         loginPage.enterUserName(LoginPage.invalidUserName)
                 .enterUserPassword(LoginPage.invalidPassword)
-                .pressLoginPage();
+                .pressLoginButton();
         loginPage.validateErrorMessage();
     }
 
-
-    @Test(priority = 1)
+    @Test
     public void loginWith_invalidUsername_validPassword(){
         loginPage.enterUserName(LoginPage.invalidUserName)
                 .enterUserPassword(LoginPage.validPassword)
-                .pressLoginPage();
+                .pressLoginButton();
         loginPage.validateErrorMessage();
     }
 
-    @Test(priority = 2)
+    @Test
     public void loginWith_validUsername_invalidPassword(){
         loginPage.enterUserName(LoginPage.validUserName)
                 .enterUserPassword(LoginPage.invalidPassword)
-                .pressLoginPage();
+                .pressLoginButton();
         loginPage.validateErrorMessage();
     }
 
-    @Test(priority = 3)
+    @Test
     public void loginWit_validUsername_validPassword(){
         loginPage.enterUserName(LoginPage.validUserName)
                 .enterUserPassword(LoginPage.validPassword)
-                .pressLoginPage();
+                .pressLoginButton()
+                .validateOnProductPage();
     }
 }
