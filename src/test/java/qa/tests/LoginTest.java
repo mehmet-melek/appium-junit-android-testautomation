@@ -6,17 +6,43 @@ import qa.pages.LoginPage;
 
 public class LoginTest extends TestBase{
 
-    LoginPage loginPomPage;
+    LoginPage loginPage;
+
 
     @BeforeMethod
     public void setupMethod() {
-        loginPomPage = new LoginPage(driver);
+        loginPage = new LoginPage(driver);
     }
 
-    @Test
-    public void deneme(){
-        loginPomPage.enterUserName("standard_user")
-                .enterUserPassword("secret_sauce")
+    @Test(priority = 0)
+    public void loginWith_invalidUsername_invalidPassword(){
+        loginPage.enterUserName(LoginPage.invalidUserName)
+                .enterUserPassword(LoginPage.invalidPassword)
+                .pressLoginPage();
+        loginPage.validateErrorMessage();
+    }
+
+
+    @Test(priority = 1)
+    public void loginWith_invalidUsername_validPassword(){
+        loginPage.enterUserName(LoginPage.invalidUserName)
+                .enterUserPassword(LoginPage.validPassword)
+                .pressLoginPage();
+        loginPage.validateErrorMessage();
+    }
+
+    @Test(priority = 2)
+    public void loginWith_validUsername_invalidPassword(){
+        loginPage.enterUserName(LoginPage.validUserName)
+                .enterUserPassword(LoginPage.invalidPassword)
+                .pressLoginPage();
+        loginPage.validateErrorMessage();
+    }
+
+    @Test(priority = 3)
+    public void loginWit_validUsername_validPassword(){
+        loginPage.enterUserName(LoginPage.validUserName)
+                .enterUserPassword(LoginPage.validPassword)
                 .pressLoginPage();
     }
 }

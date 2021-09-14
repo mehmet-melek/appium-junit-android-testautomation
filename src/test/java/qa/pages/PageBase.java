@@ -30,6 +30,11 @@ public class PageBase {
 
     public void sendKeys(MobileElement mobileElement, String text) {
         waitUntilVisible(mobileElement);
+        mobileElement.clear();
         mobileElement.sendKeys(text);
+    }
+
+    public String getElementText(MobileElement mobileElement) {
+       return mobileElement.getText();
     }
 }
