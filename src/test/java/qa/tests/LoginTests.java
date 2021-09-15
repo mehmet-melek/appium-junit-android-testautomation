@@ -5,20 +5,17 @@ import org.junit.jupiter.api.Test;
 
 import qa.pages.LoginPage;
 
-public class LoginTests extends TestBase{
+class LoginTests extends TestBase{
 
     LoginPage loginPage;
 
-
     @BeforeEach
     public void setupMethod() {
-        driver.closeApp();
-        driver.launchApp();
         loginPage = new LoginPage(driver);
     }
 
     @Test
-    public void loginWith_invalidUsername_invalidPassword(){
+    void loginWith_invalidUsername_invalidPassword(){
         loginPage.enterUserName(LoginPage.invalidUserName)
                 .enterUserPassword(LoginPage.invalidPassword)
                 .pressLoginButton();
@@ -26,7 +23,7 @@ public class LoginTests extends TestBase{
     }
 
     @Test
-    public void loginWith_invalidUsername_validPassword(){
+    void loginWith_invalidUsername_validPassword(){
         loginPage.enterUserName(LoginPage.invalidUserName)
                 .enterUserPassword(LoginPage.validPassword)
                 .pressLoginButton();
@@ -34,7 +31,7 @@ public class LoginTests extends TestBase{
     }
 
     @Test
-    public void loginWith_validUsername_invalidPassword(){
+    void loginWith_validUsername_invalidPassword(){
         loginPage.enterUserName(LoginPage.validUserName)
                 .enterUserPassword(LoginPage.invalidPassword)
                 .pressLoginButton();
@@ -42,7 +39,7 @@ public class LoginTests extends TestBase{
     }
 
     @Test
-    public void loginWit_validUsername_validPassword(){
+    void loginWit_validUsername_validPassword(){
         loginPage.enterUserName(LoginPage.validUserName)
                 .enterUserPassword(LoginPage.validPassword)
                 .pressLoginButton()

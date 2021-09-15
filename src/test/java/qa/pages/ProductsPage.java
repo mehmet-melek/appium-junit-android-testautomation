@@ -39,7 +39,7 @@ public class ProductsPage extends PageBase{
 
 
     public ProductsPage validateOnProductPage() {
-        assertEquals(getElementText(productsPageHeader),pageHeader);
+        assertEquals(pageHeader,getElementText(productsPageHeader));
         return this;
     }
 
@@ -59,7 +59,7 @@ public class ProductsPage extends PageBase{
         return this;
     }
 
-    public void validateRemoveButton() {
+    public void validateRemoveButtonIsExist() {
         assertEquals(buttonNameAfterClick,getElementText(shownRemoveButtons.get(0)));
     }
 

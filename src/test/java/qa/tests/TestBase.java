@@ -6,6 +6,7 @@ import io.appium.java_client.appmanagement.ApplicationState;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.lang.management.ManagementFactory;
@@ -29,7 +30,7 @@ public class TestBase {
         capabilities.setCapability("appActivity", "com.swaglabsmobileapp.SplashActivity");
         capabilities.setCapability("automationName", "UiAutomator2");
         //capabilities.setCapability("avd", "Pixel_3a_API_31_arm64-v8a");
-        driver = new AppiumDriver<MobileElement>(new URL("http://0.0.0.0:4723/wd/hub"),capabilities);
+        driver = new AppiumDriver<>(new URL("http://0.0.0.0:4723/wd/hub"),capabilities);
         // capabilities.setCapability("ensureWebviewsHavePages", true);
     }
 
@@ -39,9 +40,16 @@ public class TestBase {
         driver.quit();
     }*/
 
+    @BeforeEach
+    public void closeAppAfterTestThenLaunchBefore(){
+        driver.closeApp();
+        driver.launchApp();
+    }
+
     @AfterEach
     public void after() {
         //driver.closeApp();
     }
+
 
 }
