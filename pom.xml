@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.melek</groupId>
-    <artifactId>appium-testng-android-testautomation</artifactId>
+    <artifactId>appium-junit-android-testautomation</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
