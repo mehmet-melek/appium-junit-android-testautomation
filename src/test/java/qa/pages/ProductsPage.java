@@ -6,18 +6,17 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-
-public class ProductsPage extends PageBase{
+public class ProductsPage extends PageBase {
 
     public ProductsPage(AppiumDriver<MobileElement> driver) {
         super(driver);
     }
 
-    private static final String buttonNameAfterClick ="REMOVE";
-    private static final String pageHeader ="PRODUCTS";
+    private static final String buttonNameAfterClick = "REMOVE";
+    private static final String pageHeader = "PRODUCTS";
 
     @AndroidFindBy(xpath = "//*[@content-desc='test-Cart drop zone']/*/android.widget.TextView")
     private MobileElement productsPageHeader;
@@ -39,14 +38,14 @@ public class ProductsPage extends PageBase{
 
 
     public ProductsPage validateOnProductPage() {
-        assertEquals(pageHeader,getElementText(productsPageHeader));
+        assertEquals(pageHeader, getElementText(productsPageHeader));
         return this;
     }
 
 
     public ProductDetailPage openItemFromImage() {
         click(shownProductImages.get(0));
-        return new ProductDetailPage(driver);    
+        return new ProductDetailPage(driver);
     }
 
     public ProductDetailPage openItemFromTitle() {
@@ -60,7 +59,7 @@ public class ProductsPage extends PageBase{
     }
 
     public void validateRemoveButtonIsExist() {
-        assertEquals(buttonNameAfterClick,getElementText(shownRemoveButtons.get(0)));
+        assertEquals(buttonNameAfterClick, getElementText(shownRemoveButtons.get(0)));
     }
 
     public void validateItemNumberOnCardIcon(String numberOnCard) {

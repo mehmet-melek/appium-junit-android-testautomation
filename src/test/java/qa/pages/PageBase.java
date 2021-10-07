@@ -26,6 +26,7 @@ public class PageBase {
     public void waitUntilVisible(MobileElement mobileElement) {
         driverWait.until(ExpectedConditions.visibilityOf(mobileElement));
     }
+
     public void click(MobileElement mobileElement) {
         waitUntilVisible(mobileElement);
         mobileElement.click();
@@ -38,10 +39,10 @@ public class PageBase {
     }
 
     public String getElementText(MobileElement mobileElement) {
-       return mobileElement.getText();
+        return mobileElement.getText();
     }
 
-    public MobileElement getElementFromElementList(List<MobileElement> mobileElementList,int index) {
+    public MobileElement getElementFromElementList(List<MobileElement> mobileElementList, int index) {
         return mobileElementList.get(index);
     }
 
