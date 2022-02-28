@@ -25,9 +25,6 @@ public class DriverSetup {
         capabilities.setCapability("appActivity", "com.swaglabsmobileapp.SplashActivity");
         capabilities.setCapability("automationName", "UiAutomator2");
         capabilities.setCapability("systemPort","8201");
-        //capabilities.setCapability("avd", "Pixel_3a_API_31_arm64-v8a");
         driver = new AppiumDriver<>(new URL("http://127.0.0.1:4444/wd/hub"),capabilities);
-        //driver = new AppiumDriver<>(new URL("http://0.0.0.0:4723/wd/hub"),capabilities);
-        // capabilities.setCapability("ensureWebviewsHavePages", true);
     }
 }
